@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- logback.xml configures where runtime logging results go -->
+    <!-- logback-test.xml configures where unit test logging results go -->
+
+    <!--<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+        <!--<encoder>-->
+            <!--<pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+
+    <appender name="R" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${catalina.base}/logs/spring-beans-demo.log</File>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${catalina.base}/logs/spring-beans-demo.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!--<appender name="PERF" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<File>${catalina.base}/logs/ytimedemo.performance.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--&lt;!&ndash; daily rollover &ndash;&gt;-->
+            <!--<fileNamePattern>${catalina.base}/logs/ytimedemo.performance.%d{yyyy-MM-dd}.log.gz</fileNamePattern>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>%msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+    
+    <!-- 
+    <logger name="org.apache.commons.httpclient" level="DEBUG"/>
+    <logger name="httpclient.wire" level="DEBUG"/>
+    <logger name="edu.wisc" level="DEBUG"/>
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="edu.byu" level="DEBUG"/>
+    -->
+
+    <!--<logger name="edu.wisc.logging.perf" level="TRACE" additivity="false">-->
+        <!--<appender-ref ref="PERF" />-->
+    <!--</logger>-->
+   
+    <root level="INFO">
+        <appender-ref ref="R" />
+    </root>
+
+    <!--<root level="DEBUG">-->
+        <!--<appender-ref ref="R" />-->
+    <!--</root>-->
+
+    <!--<logger name="edu.byu.ytime" level="DEBUG" additivity="false">-->
+        <!--<appender-ref ref="R" />-->
+    <!--</logger>-->
+
+    <!--<logger name="edu.byu.hr.timereporting" level="DEBUG">-->
+        <!--<appender-ref ref="R" />-->
+    <!--</logger>-->
+
+</configuration>
+

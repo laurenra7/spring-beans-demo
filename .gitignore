@@ -1,0 +1,19 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ
+*.iml
+*.iws
+.idea/
+
+# Maven
+target/
+
+# Unit test logs
+*.log
+
+# Other
+*.wsdl
+

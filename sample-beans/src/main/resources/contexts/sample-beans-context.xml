@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <!--<import resource="classpath:contexts/BYUCommon-Context.xml"/>-->
+    <!--<context:component-scan base-package="org.learn.spring.beans"/>-->
+
+    <!-- Definition for textEditor bean with constructor argument -->
+    <!--<bean id="textEditorConstructorInjection" class="edu.byu.hr.timereporting.sample.TextEditorConstructorInjection">-->
+        <!--<constructor-arg name="spellChecker" ref="spellCheckerEnglishUS"/>-->
+    <!--</bean>-->
+
+    <!-- Definition for textEditor bean using @Autowire to inject constructor argument -->
+    <!--<bean id="textEditorConstructorInjection" class="org.learn.spring.beans.TextEditorConstructorInjection">-->
+        <!--<constructor-arg name="spellChecker" ref="spellCheckerEnglishUS"/>-->
+    <!--</bean>-->
+
+    <!-- Definition for textEditor bean with setter argument -->
+    <!--<bean id="textEditorSetterInjection" class="org.learn.spring.beans.TextEditorSetterInjection">-->
+        <!--<property name="spellChecker" ref="spellCheckerFrenchFR"/>-->
+    <!--</bean>-->
+
+    <!-- Definition for spellCheckerEnglishUS bean -->
+    <!--<bean id="spellCheckerEnglishUS" class="org.learn.spring.beans.SpellCheckerEnglishUS">-->
+    <!--</bean>-->
+
+    <!-- Definition for spellCheckerFrenchFR bean -->
+    <!--<bean id="spellCheckerFrenchFR" class="org.learn.spring.beans.SpellCheckerFrenchFR">-->
+    <!--</bean>-->
+
+    <!-- Definition for spellCheckerGermanDE bean -->
+    <!--<bean id="spellCheckerGermanDE" class="org.learn.spring.beans.SpellCheckerGermanDE">-->
+    <!--</bean>-->
+
+</beans>

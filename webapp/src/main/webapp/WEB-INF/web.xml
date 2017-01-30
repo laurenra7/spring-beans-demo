@@ -1,0 +1,73 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app id="WebApp_ID" version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd">
+
+    <display-name>Spring MVC Application</display-name>
+
+    <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- Configure the ContextLoaderListener to use AnnotationConfigWebApplicationContext instead of default XmlWebApplicationContext -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+
+    <!-- Create the Spring Container shared by all servlets and filters -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            <!--classpath*:/contexts/*.xml-->
+            org.learn.spring.beans.annotated
+            <!--/WEB-INF/MyWebPageController-serves.xml-->
+            <!--/WEB-INF/spring/myservlet/myservlet-config.xml-->
+        </param-value>
+        <!--<param-value>/WEB-INF/spring/*.xml, classpath*:/contexts/*.xml</param-value>-->
+    </context-param>
+
+
+
+    <!-- Load the DispatcherServlet to direct web requests to your controller. Default name of XML configuration file -->
+    <!-- associated with your controller is {servlet-name}-servlet.xml. For example, if it's MyController then the    -->
+    <!-- XML file is MyController-servlet.xml and is located by default in the WEB-INF directory.  You can change     -->
+    <!-- the default name and location by using a contextConfigLocation <init-param>.                                 -->
+    <servlet>
+        <servlet-name>WebPageController</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring/myservlet/myservlet-config.xml
+            </param-value>
+        </init-param>
+        <!-- You can configure DispatcherServlet to use AnnotationConfigWebApplicationContext
+             instead of the default XmlWebApplicationContext -->
+        <!--<init-param>-->
+            <!--<param-name>contextClass</param-name>-->
+            <!--<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>-->
+        <!--</init-param>-->
+        <!-- Again, config locations must consist of one or more comma- or space-delimited
+             and fully-qualified @Configuration classes -->
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value>-->
+                <!--org.learn.spring.beans.annotated-->
+            <!--</param-value>-->
+        <!--</init-param>-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WebPageController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
